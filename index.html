@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DND ID Card Generator</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body class="flex h-screen bg-gray-100">
+		<div class="controls bg-white">
+			<h2 class="text-xl font-bold mb-4">ID Card Controls</h2>
+
+			<label for="districtName">District Name:</label>
+			<input
+				type="text"
+				id="districtName"
+				placeholder="Enter District Name" />
+
+			<label for="districtFontSize">District Font Size (px):</label>
+			<input
+				type="number"
+				id="districtFontSize"
+				value="20"
+				min="10"
+				max="40" />
+
+			<label for="photoUpload">Upload Photo:</label>
+			<input type="file" id="photoUpload" accept="image/*" />
+
+			<label for="photoPositionX">Photo Position X (%):</label>
+			<input
+				type="range"
+				id="photoPositionX"
+				min="0"
+				max="100"
+				value="50" />
+
+			<label for="photoPositionY">Photo Position Y (%):</label>
+			<input
+				type="range"
+				id="photoPositionY"
+				min="0"
+				max="100"
+				value="50" />
+
+			<label for="firstName">First Name:</label>
+			<input type="text" id="firstName" placeholder="First Name" />
+
+			<label for="lastName">Last Name:</label>
+			<input type="text" id="lastName" placeholder="Last Name" />
+
+			<label for="patronymic">Patronymic:</label>
+			<input type="text" id="patronymic" placeholder="Patronymic" />
+
+			<label for="dob">Date of Birth:</label>
+			<input type="date" id="dob" />
+
+			<label for="logoUpload">Upload District Logo:</label>
+			<input type="file" id="logoUpload" accept="image/*" />
+
+			<label for="cardPadding">Card Padding (px):</label>
+			<input type="number" id="cardPadding" value="16" min="0" max="50" />
+
+			<label for="infoSpacing">Info Line Spacing (px):</label>
+			<input type="number" id="infoSpacing" value="5" min="0" max="20" />
+
+			<label for="backgroundUpload">Upload Background Image:</label>
+			<input type="file" id="backgroundUpload" accept="image/*" />
+
+			<h3 class="text-lg font-semibold mt-4 mb-2">Colors</h3>
+
+			<div class="color-picker-group">
+				<label for="cardBgColor">Card Background:</label>
+				<input type="color" id="cardBgColor" value="#ffffff" />
+			</div>
+
+			<div class="color-picker-group">
+				<label for="cardTextColor">Card Text Color:</label>
+				<input type="color" id="cardTextColor" value="#000000" />
+			</div>
+
+			<div class="color-picker-group">
+				<label for="districtTextColor">District Text Color:</label>
+				<input type="color" id="districtTextColor" value="#000000" />
+			</div>
+
+			<div class="color-picker-group">
+				<label for="cardBorderColor">Card Border Color:</label>
+				<input type="color" id="cardBorderColor" value="#000000" />
+			</div>
+
+			<button id="downloadBtn">Download ID Card</button>
+		</div>
+
+		<div class="flex-grow flex items-center justify-center p-4">
+			<div id="id-card-preview" class="rounded-lg">
+				<div class="district-name" id="previewDistrictName">
+					District Name
+				</div>
+				<div class="card-content">
+					<div class="photo-container">
+						<img
+							id="previewPhoto"
+							src="https://placehold.co/100x120/eeeeee/333333?text=Photo"
+							alt="Character Photo" />
+					</div>
+					<div class="info-section">
+						<p>
+							<strong>Name:</strong>
+							<span id="previewFullName"
+								>First Last Patronymic</span
+							>
+						</p>
+						<p>
+							<strong>DOB:</strong>
+							<span id="previewDob">YYYY-MM-DD</span>
+						</p>
+					</div>
+				</div>
+				<div class="logo-container">
+					<img
+						id="previewLogo"
+						src="https://placehold.co/60x60/cccccc/333333?text=Logo"
+						alt="District Logo" />
+				</div>
+				<div
+					class="document-number text-sm text-center mt-2"
+					id="documentNumber">
+					Document No: 1234567890
+				</div>
+				<div class="barcode-container">
+					<svg id="barcode"></svg>
+				</div>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

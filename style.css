@@ -1,0 +1,165 @@
+/* Custom styles for the ID card layout */
+#id-card-preview {
+	width: 400px; /* Fixed width for the card */
+	height: 250px; /* Fixed height for the card */
+	background-color: var(--card-bg, #ffffff); /* Default background */
+	color: var(--card-text, #000000); /* Default text color */
+	border: 2px solid var(--card-border, #000000); /* Default border color */
+	font-family: sans-serif;
+	position: relative;
+	overflow: hidden; /* Hide overflow from images */
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+	padding: var(--card-padding, 1rem); /* Use CSS variable for padding */
+	box-sizing: border-box;
+	background-size: cover; /* Cover the entire element */
+	background-position: center; /* Center the background image */
+	background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+#id-card-preview .district-name {
+	text-align: center;
+	font-size: var(
+		--district-font-size,
+		1.2rem
+	); /* Use CSS variable for font size */
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	color: var(--district-text, #000000); /* Default district text color */
+}
+
+#id-card-preview .card-content {
+	display: flex;
+	flex-grow: 1;
+}
+
+#id-card-preview .photo-container {
+	width: 100px;
+	height: 120px;
+	border: 1px solid #ccc;
+	margin-right: 1rem;
+	overflow: hidden; /* Crucial for object-fit */
+	flex-shrink: 0; /* Prevent shrinking */
+	position: relative; /* Needed for absolute positioning if used */
+}
+
+#id-card-preview .photo-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Crop image to fit container */
+	object-position: 50% 50%; /* Default center position */
+}
+
+#id-card-preview .info-section {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#id-card-preview .info-section p {
+	margin-bottom: var(
+		--info-line-spacing,
+		0.3rem
+	); /* Use CSS variable for spacing */
+	font-size: 0.9rem;
+}
+
+#id-card-preview .logo-container {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	overflow: hidden;
+}
+
+#id-card-preview .logo-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* Contain image within container */
+}
+
+#id-card-preview .document-number {
+	text-align: center;
+	margin-top: 0.5rem;
+}
+
+#id-card-preview .barcode-container {
+	width: 80%; /* Adjust width as needed */
+	height: 40px; /* Adjust height as needed */
+	margin-top: 0.2rem; /* Reduced margin to be closer to number */
+	margin-bottom: 0.2rem;
+	align-self: center; /* Center the barcode */
+}
+
+#id-card-preview .barcode-container svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Styles for the controls */
+.controls {
+	width: 300px;
+	padding: 1rem;
+	border-right: 1px solid #ccc;
+	overflow-y: auto; /* Add scroll if controls are too long */
+}
+
+.controls label {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-weight: bold;
+}
+
+.controls input[type='text'],
+.controls input[type='date'],
+.controls input[type='color'],
+.controls input[type='file'],
+.controls input[type='number'],
+.controls input[type='range'],
+.controls button {
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+}
+
+.controls input[type='file'] {
+	padding: 0.3rem; /* Adjust padding for file input */
+}
+
+.controls button {
+	background-color: #3b82f6; /* Blue 500 */
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.controls button:hover {
+	background-color: #2563eb; /* Blue 600 */
+}
+
+.color-picker-group {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0.5rem;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.color-picker-group input[type='color'] {
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+.color-picker-group label {
+	margin-bottom: 0; /* Remove bottom margin for grid item */
+}
